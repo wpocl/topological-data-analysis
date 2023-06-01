@@ -1,0 +1,51 @@
+% Packages
+% ------------------------------------------------------------------------------
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[a4paper, margin = 2.54cm]{geometry}
+\usepackage{graphicx}
+% ------------------------------------------------------------------------------
+
+% Enviroments
+% ------------------------------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{claim}{Claim}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+% ------------------------------------------------------------------------------
+
+% Commands
+% ------------------------------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{|}{|}
+
+\renewcommand{\dim}{\textrm{dim}}
+\newcommand{\rank}{\textrm{rank}}
+\renewcommand{\ker}{\textrm{ker}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\coi}{\textrm{coi}}
+\newcommand{\0}{\mathbf{0}}
+% ------------------------------------------------------------------------------
+
+% Configuration
+% ------------------------------------------------------------------------------
+\setlength\parindent{0pt}
+% ------------------------------------------------------------------------------

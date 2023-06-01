@@ -1,0 +1,120 @@
+\section{Theoretical Background}
+
+%-------------------------------------------------------------------------------
+
+\subsection{Simplices}
+
+A collection of k + 1 points is affinely independent if the members lie on an affine hyperplane of dimension $k$. The convex hull of a set $X \subseteq \R^n$ is the smallest convex set containing $X$. For a finite set $\{x_0, \ldots, x_k\}$ this is the set of combinations $\sum_{i=0}^k \lambda_i x_k$ with $\sum_{i=0}^k\lambda_i = 1$.
+
+\begin{definition}
+    Given an affinely independent set $X = \{x_0, \ldots, x_k\} \subseteq \R^n$, the k-dimensional simplex (sometimes called a geometric simplex) $\sigma = [x_0, \ldots, x_n]$ spanned by $X$ is the convex hull of $X$. The points of $X$ are called the vertices of $\sigma$, and the simplices spanned by subsets of $X$ (which are necessarily affinely independent) are called the faces of $\sigma$.
+\end{definition}
+
+\begin{definition}
+    A simplicial complex $K$ is a finite collection of geometric simplices such that
+    \begin{itemize}
+        \item[(i)] for any simplex $\sigma \in K$, every face of $\sigma$ is in $K$;
+        \item[(ii)] for any two simplices $\sigma, \tau \in K$, $\sigma \cap \tau$ is either empty, or a face of both $\sigma$ and $\tau$.
+    \end{itemize}
+\end{definition}
+
+The dimension of $K$ is the largest dimension of any simplex in $K$. A subcomplex of $K$ is a subset of $K$ which is a simplicial complex.
+
+%-------------------------------------------------------------------------------
+
+\subsection{Simplicial Homology}
+
+\begin{definition}
+    Given a simplicial complex $K$, we define a p-chain as a subset of the p-simplices in $K$. 
+\end{definition}
+
+We can write a p-chain $c$ as the formal sum $c = \sum a_i \sigma_i$ where the sum is over all p-simplices and the coefficients are in $\Z_2$. This gives rise to an abelian group $(C_p, +)$, where $c + c' = \sum (a_i + b_i) \sigma_i$ and the coefficients are reduced mod 2. It can be further extended to a vector space by defining scalar multiplication as $a \cdot c = \sum (a \cdot a_i) \sigma_i$.
+
+The boundary of a p-simplex is the set of (p-1)-faces. The boundary of a p-chain is the sum of the boundaries of its p-simplices: $\partial_p c = \sum a_i \partial_p \sigma_i$.
+
+\begin{definition}
+    This can be formalised as an operation between vector spaces: 
+    $$
+    \partial_p: C_p \rightarrow C_{p-1}
+    $$ 
+    called the boundary homomorphism.
+\end{definition}
+
+These vector spaces and maps can be lined up into a sequence
+$$
+\cdots \rightarrow{\partial_{p+2}} C_{p+1} 
+       \rightarrow{\partial_{p+1}} C_p
+       \rightarrow{\partial_{p}} C_{p-1}
+       \rightarrow{\partial_{p-1}} \ldots
+$$
+called the chain complex of $K$.
+
+\begin{proposition}
+    $\partial \partial c = 0$.
+\end{proposition}
+
+\begin{proof}
+    Let $\sigma$ be a p-simplex. The vertices of a (p-2)-face are a subset of size p-1 from the p+1 vertices of $\sigma$. There are two subsets of $V(p)$ with size p containing these p-2 vertices. It follows that every (p-2)-face of $\sigma$ is contained in exactly two (p-1)-faces, and therefore that $\partial \partial$ vanishes on $\sigma$ as coefficients are reduced mod 2. By homomorphism properties this now follows for p-chains.
+\end{proof}
+
+\begin{definition}
+    A p-cycle is a p-chain without boundary, the set of all p-cycles is therefore $\ker \partial_p$. As the kernel of a homomorphism it is a subgroup of $C_p$, and we denote it by $Z_p$.
+
+    Similarly, we define a p-boundary to be the boundary of a (p+1)-chain, the set of all p-boundaries is therefore $\im \partial_{p+1}$. As the image of a homomorphism it is a subgroup of $C_p$, and we denote it by $B_p$.
+\end{definition}
+
+Note also that $B_p \unlhd Z_p$ because $Z_p$ is abelian, we can therefore take the quotient $Z_p / B_p$ which represents the distinct cycles up to boundary.   
+
+\begin{definition}
+    We say that $z, z' \in Z_p$ are homologous if they fall in the same conjugacy class in $Z_p / B_p$.
+\end{definition}
+
+We denote the quotient $Z_p / B_p$ by $H_p$, and call it the p$^{\text{th}}$ homology group. Its members are referred to as homology classes.
+
+The above definitions can be extended to incorporate the vector space structure. Then, the rank-nullity theorem can then be applied to give 
+$$
+\rank H_p = \rank Z_p - \rank B_p,
+$$
+which we refer to the p$^{\text{th}}$ Betti number of $K$ and notate by $\beta_p = rank H_p$.
+
+\begin{definition}
+    Define the Euler characteristic of a simplicial complex $K$ by 
+    $$
+    \chi(K) = \sum_{i=0}^k (-1)^i \rank C_p,
+    $$
+    where $k = \dim K$.
+\end{definition}
+
+The map $\partial_p: C_p \rightarrow B_{p-1}$ is surjective, so we can apply the rank-nullity theorem to get $\rank B_{p-1} = \rank C_p - \rank Z_p$. We can use this, along with that $B_i = \0$ for $i$ outside $\{0, \ldots, k-1\}$, to rewrite the Euler characteristic:
+
+\begin{align*}
+    \chi(K) &= \sum_{i=0}^k (-1)^i (\rank Z_p + \rank B_{i-1}) \\
+            &= \sum_{i=0}^k (-1)^i \rank Z_p - \sum_{i=0}^k (-1)^i B_{i} \\
+            &= \sum_{i=0}^k (-1)^i (\rank Z_p - B_{i}) \\
+            &= \sum_{i=0}^k (-1)^i \beta_i.
+\end{align*}
+
+%-------------------------------------------------------------------------------
+
+\subsection{Homology}
+
+\begin{definition}
+    The underlying space of a simplicial complex $K$ is defined as the union
+    $$
+    \abs{K} = \bigcup_{\sigma \in K} \sigma,
+    $$
+    and equipt with the subspace topology.
+\end{definition}
+
+\begin{definition}
+    A triangulation of a topological space $X$ is a simplicial complex $K$, whose underlying space is homeomorphic to $X$.
+\end{definition}
+
+The previous definition of the Euler characteristic can be extended to be a well-defined topological invariant by defining it on a triangulation of a space. It is independent of the specific choice of triangulation.
+
+We note that having the same homology groups is weaker than having the same homotopy type, which is again weaker than being homeomorphic:
+$$
+X \approx Y \implies X \simeq Y \implies H_p(X) \cong H_p(Y) \text{ for all p.}.
+$$
+
+The implications of this are that to compute the Betti numbers of $X$, we may find a space $Y$ with the same homotopy type and compute its Betti numbers.
