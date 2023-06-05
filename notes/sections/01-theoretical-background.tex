@@ -88,10 +88,11 @@ which we refer to the p$^{\text{th}}$ Betti number of $K$ and notate by $\beta_p
 The map $\partial_p: C_p \rightarrow B_{p-1}$ is surjective, so we can apply the rank-nullity theorem to get $\rank B_{p-1} = \rank C_p - \rank Z_p$. We can use this, along with that $B_i = \0$ for $i$ outside $\{0, \ldots, k-1\}$, to rewrite the Euler characteristic:
 
 \begin{align*}
-    \chi(K) &= \sum_{i=0}^k (-1)^i (\rank Z_p + \rank B_{i-1}) \\
-            &= \sum_{i=0}^k (-1)^i \rank Z_p - \sum_{i=0}^k (-1)^i B_{i} \\
-            &= \sum_{i=0}^k (-1)^i (\rank Z_p - B_{i}) \\
-            &= \sum_{i=0}^k (-1)^i \beta_i.
+    \chi(K) 
+    &= \sum_{i=0}^k (-1)^i (\rank Z_p + \rank B_{i-1}) \\
+    &= \sum_{i=0}^k (-1)^i \rank Z_p - \sum_{i=0}^k (-1)^i B_{i} \\
+    &= \sum_{i=0}^k (-1)^i (\rank Z_p - B_{i}) \\
+    &= \sum_{i=0}^k (-1)^i \beta_i.
 \end{align*}
 
 %-------------------------------------------------------------------------------
@@ -118,3 +119,5 @@ X \approx Y \implies X \simeq Y \implies H_p(X) \cong H_p(Y) \text{ for all p.}.
 $$
 
 The implications of this are that to compute the Betti numbers of $X$, we may find a space $Y$ with the same homotopy type and compute its Betti numbers.
+
+%-------------------------------------------------------------------------------

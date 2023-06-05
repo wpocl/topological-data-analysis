@@ -1,0 +1,162 @@
+\section{Complex Construction}
+
+
+%-------------------------------------------------------------------------------
+
+
+\subsection{Abstract Simplicial Complexes}
+
+
+\begin{definition}
+An abstract simplicial complex $A$ is a system of sets such that $\alpha \in A$ and $\beta \subseteq \alpha$ implies $\beta \in A$.
+\end{definition}
+
+
+The sets $\alpha$ are called abstract simplices, their dimension is defined as their cardinality minus one. The dimension of an abstract simplex $A$ is defined as the dimension of its largest member.
+
+
+\begin{definition}
+A geometric realisation of an abstract simplicial complex $A$ is an embedding of $A$ in Euclidean space as a simplical complex. By this we mean that each vertex in $A$ is associated with a distinct point in Euclidean space, with the property that the system of subcollections of these points corresponding to $A$ is a simplicial complex.
+\end{definition}
+
+
+It is natural to ask whether every abstract simplical complex has a geometric realisation in $\R^d$. The following result is in the affirmative if $d$ is big enough.
+
+
+\begin{theorem}
+Any abstract simplicial complex of dimension $k$ has a geometric realisation in $\R^{2k+1}$.
+\end{theorem}
+
+
+%-------------------------------------------------------------------------------
+
+
+\subsection{Nerves}
+
+
+\begin{definition}
+Let $X$ be a finite collection of sets. The nerve of $X$ is the system of subcollections of $X$ whose sets have a non-empty common intersection:
+$$
+\nrv X = \{V \subseteq X : V \not= \emptyset \text{ and } \mathsmaller{\bigcap}_{v \in V} v \not= \emptyset\}.
+$$
+\end{definition}
+
+
+A nerve is an abstract simplicial complex because if $V \in \nrv X$ and $W \subseteq V$, with $W$ nonempty, then $\bigcap_{w \in W} w \supseteq \bigcap_{v \in V} v \supsetneq \emptyset$ so $W \in \nrv X$.
+
+
+\begin{theorem}
+If all sets in $X$ are closed and triangulable, and all non-empty common intersections of the sets are contractible, then $\nrv X$ and $\bigcup_{x \in X} x$ have the same homotopy type.
+\end{theorem}
+
+
+%-------------------------------------------------------------------------------
+
+
+\subsection{Alpha Complexes}
+
+
+Let $S$ be a finite set of points in $\R^2$. We refer to the members of $S$ as sites to distinguish them from points in the surrounding space.
+
+
+Fix $\alpha > 0$, and write $B_x(\alpha)$ for the closed ball with radius $\alpha$ centred at $x \in \R^2$. It is called empty if $D_x(\alpha) \cap S = \emptyset$.
+
+
+A point $x$ is the centre of an empty disc with a radius $\alpha$ if and only if it is further than $\alpha$ from every site. We consider the union of discs of radius $\alpha$ centred at the sites:
+$$
+U_S(\alpha) = \bigcup_{s \in S} D_s(\alpha).
+$$
+This union is the complement of the set of centres of the empty discs.
+
+
+\begin{definition}
+For $s \in S$, define the Voronoi region of $s$ as
+$$
+V_s = \{x \in \R^2 : \norm{x-s} \leq \norm{x-t}, \forall t \in S\}.
+$$
+\end{definition}
+
+
+Notice that $\norm{x - s} \leq \norm{x - t}$ is a closed half-plane, so $V_s$ is the intersection of finitely many half-planes and therefore a convex polygon. Any two Voronoi regions intersect at most along their boundaries, and together, the Voronoi regions cover the entire plane.
+
+
+\begin{definition}
+The Voronoi diagram of $S$ is the set of Voronoi regions, one for each site in $S$.
+\end{definition}
+
+
+\begin{definition}
+Given a Voronoi diagram of $S \subseteq \R^2$ we can construct its Delaunay triangulation by connecting two sites with a straight edge whenever the corresponding two Voronoi regions share an edge.
+\end{definition}
+
+
+Write $R_s(\alpha) = V_s \cap D_s(\alpha)$, noting that it is a convex set as the intersection of convex sets. Furthermore, $U_S(\alpha) = \bigcup_{s \in S} R_s(\alpha)$, so that the sets $R_s(\alpha)$ cover $U_s(\alpha)$. Furthermore, the common overlap of the regions is limited to shared edges and vertices.
+
+
+Following the recipe for the Delaunay triangulation, we construct the $\alpha$-complex by drawing an edge between two sites $s$ and $s'$ if the intersection of $R_s(\alpha)$ and $R_{s'}(\alpha)$ is a common edge. We denote this complex by $A_S(\alpha)$ or $A(\alpha)$.
+
+
+\begin{definition}
+To be more precise in the complex structure that $A(\alpha)$ has, we formally define it as the nerve of the Voronoi diagram of $S$:
+$$
+A(\alpha) = \{\sigma \subseteq S : \mathsmaller{\bigcap}_{s \in \sigma}R_s(\alpha) \not= \emptyset\}.
+$$
+\end{definition}
+
+
+\begin{definition}
+The $\alpha$-shape of $S$ is defined as the union of all simplices in $A_{S}(\alpha)$.
+\end{definition}
+
+
+Let $X$ be the Voronoi diagram of $S$. The members of $X$, the sets $R_s(\alpha)$, are all closed (as finite intersections of closed sets) and triangulable (using the above triangulation). Then, applying the Nerve Theorem, $U_s(\alpha)$ and $A(\alpha)$ have the same homotopy type.
+
+
+%-------------------------------------------------------------------------------
+
+
+\subsection{\v{C}ech Complexes}
+
+
+Suppose we simplify the construction of the $\alpha$-complex by considering only the intersection of discs, without first restricting them to the corresponding Voronoi regions. The \v{C}ech complex formalises this idea.
+
+
+\begin{definition}
+Using the same notation as before, define the \v{C}ech complex as
+$$
+\text{\v{C}}ech(r) = \{T \subseteq S : T \not= \emptyset \text{ and } \mathsmaller{\bigcap}_{s \in T} D_s(r) \not = \emptyset\}.
+$$
+\end{definition}
+
+
+The \v{C}ech complex is isomorphic to the nerve of the discs $\nrv(\{D_s(r): s \in S\})$. By the Nerve Theorem, the \v{C}ech complex has the same homotopy type as the union of the discs (and therefore $\abs{A(r)} \simeq \abs{\cech(r)}$).
+
+
+\subsection{Vietoris-Rips Complexes}
+
+
+It can be difficult (or impossible in some metric spaces) to test whether a collection of disks have a non-empty intersection. We now define a complex that needs only the distances between points in S for its construction.
+
+
+\begin{definition}
+Using the same notation as before, define the Vietoris-Rips complex as the set of abstract simplexes $\sigma$ with vertices $S$, such that any two vertices in $\sigma$ are at most a distance of $2r$ from each other. We denote the complex by $\rips(r)$
+\end{definition}
+
+
+The Vietoris-Rips complex doesn't have the same homotopy type as the union of disks of radius $r$, which suggests it can have topological artifacts that do not show up in the data. While this is true, in practice, these artifacts tend to be limited.
+
+
+\begin{proposition}
+Let $S$ be a finite set in $\R^2$. Then $\cech(r) \subseteq \rips(r) \subseteq \cech(r')$, where $r' = \frac {2r}{\sqrt{3}}$.
+\end{proposition}
+
+
+\begin{proof}
+For $\sigma \in \cech(r)$, $\mathsmaller{\bigcap}_{s \in V(\sigma)} D_s(r) \not = \emptyset$, therefore, by the triangle inequality, the distance between any two points in $\abs{\sigma}$ is at most $2r$, so $\sigma \in \rips(r)$.
+
+
+Next, fix $\sigma \in \rips(r)$. The second inclusion is trivial if the dimension of $\sigma$ is zero or one, so assume it's two. Furthermore, we can assume that the three points in $V(\sigma)$ are the vertices of an equilateral triangle with side lengths $2r$. The circumcenter of this triangle is a distance of $r'$ from the vertices, therefore $\sigma \in \cech(r')$.
+\end{proof}
+
+
+%-------------------------------------------------------------------------------
