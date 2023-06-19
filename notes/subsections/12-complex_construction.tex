@@ -1,8 +1,8 @@
-\section{Complex Construction}
+\subsection{Complex Construction}
 
 %-------------------------------------------------------------------------------
 
-\subsection{Abstract Simplicial Complexes}
+\subsubsection{Abstract Simplicial Complexes}
 
 \begin{definition}
 An abstract simplicial complex $A$ is a system of sets such that $\alpha \in A$ and $\beta \subseteq \alpha$ implies $\beta \in A$.
@@ -22,7 +22,7 @@ Any abstract simplicial complex of dimension $k$ has a geometric realisation in 
 
 %-------------------------------------------------------------------------------
 
-\subsection{Nerves}
+\subsubsection{Nerves}
 
 \begin{definition}
 Let $X$ be a finite collection of sets. The nerve of $X$ is the system of subcollections of $X$ whose sets have a non-empty common intersection:
@@ -39,7 +39,7 @@ If all sets in $X$ are closed and triangulable, and all non-empty common interse
 
 %-------------------------------------------------------------------------------
 
-\subsection{Alpha Complexes}
+\subsubsection{Alpha Complexes}
 
 Let $S$ be a finite set of points in $\R^2$. We refer to the members of $S$ as sites to distinguish them from points in the surrounding space.
 
@@ -90,7 +90,7 @@ Let $X$ be the Voronoi diagram of $S$. The members of $X$, the sets $R_s(\alpha)
 
 %-------------------------------------------------------------------------------
 
-\subsection{\v{C}ech Complexes}
+\subsubsection{\v{C}ech Complexes}
 
 Suppose we simplify the construction of the $\alpha$-complex by considering only the intersection of discs, without first restricting them to the corresponding Voronoi regions. The \v{C}ech complex formalises this idea.
 
@@ -103,7 +103,7 @@ $$
 
 The \v{C}ech complex is isomorphic to the nerve of the discs $\nrv(\{D_s(r): s \in S\})$. By the Nerve Theorem, the \v{C}ech complex has the same homotopy type as the union of the discs (and therefore $\abs{A(r)} \simeq \abs{\cech(r)}$).
 
-\subsection{Vietoris-Rips Complexes}
+\subsubsection{Vietoris-Rips Complexes}
 
 It can be difficult (or impossible in some metric spaces) to test whether a collection of disks have a non-empty intersection. We now define a complex that needs only the distances between points in S for its construction.
 

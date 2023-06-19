@@ -1,8 +1,8 @@
-\section{Persistent Homology}
+\subsection{Persistent Homology}
 
 %-------------------------------------------------------------------------------
 
-\subsection{Filtration}
+\subsubsection{Filtration}
 
 \begin{definition}
     Let $K$ be a simplicial complex. A filtration on $K$ is a sequence of simplicial complexes:
@@ -21,7 +21,7 @@
 
 %-------------------------------------------------------------------------------
 
-\subsection{Birth and Death}
+\subsubsection{Birth and Death}
 
 Let $K_0 \subseteq K_1 \subseteq \ldots \subseteq K_n$ be a filtration. For $i \leq j$ there is an inclusion $f^{i, j}: K_i \hookrightarrow K_j$. This map induces an inclusion homomorphism $f_p^{i, j}: Z_p(K_i) \hookrightarrow Z_p(K_j)$, which in turn induces the homomorphism 
 $$
@@ -35,7 +35,7 @@ The index of persistence of $\gamma$ is $j + 1 - i$. Often we have a function wh
 
 %-------------------------------------------------------------------------------
 
-\subsection{Barcodes}
+\subsubsection{Barcodes}
 
 A barcode plot is a convenient way to represent the birth and death of classes throughout a filtration. In its unrestricted form, each horizonal bar represents a generator of the homology group, its length and position represent when, and for how long, it was alive. Bars which extend to the right hand edge of the diagram are those which persisted to the end of the filtration. 
 
@@ -49,7 +49,7 @@ The following plot shows a simplified barcode plot for 1000 points sampled from 
 
 %-------------------------------------------------------------------------------
 
-\subsection{Peristence Diagrams}
+\subsubsection{Peristence Diagrams}
 
 As mentioned, barcode diagrams can become extremely complicated for data with more complex topology. For these cases, a representation as points in the plane is convenient. In a peristence diagram we plot birth time against death time with each point representing a generator from a homology class. Points are colour coded by the homology group they belong to.
 
@@ -92,7 +92,7 @@ Also, we can define the following norms of a persistence diagram:
 
 %-------------------------------------------------------------------------------
 
-\subsection{Peristence Landscapes}
+\subsubsection{Peristence Landscapes}
 
 Fix a filtration, and consider the birth death pairs $\{(b_i, d_i)\}_{i=1}^n$ for a fixed homology dimension $p$. For each birth and death pair $(b, d)$, define the piecewise linear function $f_{(b, d)}: \R \rightarrow \infty$ by
 $$
