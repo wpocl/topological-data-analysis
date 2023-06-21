@@ -1,7 +1,91 @@
 \subsection{Neural Networks}
 
+Neural networks refer to non-linear models $h_{\theta}(x)$ that involve combinations of matrix multiplication and entry-wise non-linear operations. In this section we outline some common operations used in these models. 
+
 %-------------------------------------------------------------------------------
 
+\subsubsection{Layers}
 
+\begin{example}
+    \textbf{Input Layer:} The input layer receives the raw input data and passes it to the subsequent layers. It doesn't perform any computations and is typically designed to match the dimensionality of the input data.
+\end{example}
+
+\begin{example}
+    \textbf{Fully Connected Layer:} A fully connected layer connects every neuron in the current layer to every neuron in the subsequent layer. Each neuron in a connected layer receives inputs from all the neurons in the previous layer and performs a weighted sum, followed by an activation function.
+\end{example}
+
+\begin{example}
+    \textbf{Convolutional Layer:} Convolutional layers are commonly used in convolutional neural networks (CNNs) for processing grid-like input data, such as images. These layers apply convolution operations to the input data using learnable filters, capturing local patterns and spatial relationships.
+\end{example}
+
+\begin{example}
+    \textbf{Pooling Layer:} Pooling layers are often used in conjunction with convolutional layers in CNNs. They downsample the feature maps by aggregating nearby values, reducing spatial dimensions and extracting dominant features. Common pooling operations include max pooling and average pooling.
+\end{example}
+
+\begin{example}
+    \textbf{Recurrent Layer:} Recurrent layers, such as Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU), are used for sequential data processing. These layers have recurrent connections, allowing them to maintain and propagate information across time steps.
+\end{example}
+    
+\begin{example}
+    \textbf{Dropout Layer:} Dropout layers help prevent overfitting in neural networks. They randomly set a fraction of the inputs to zero during training, forcing the network to learn more robust representations by not relying heavily on any particular set of input features.
+\end{example}
+    
+\begin{example}
+    \textbf{Batch Normalization Layer:} Batch normalization layers normalize the activations of the previous layer, typically by subtracting the batch mean and dividing by the batch standard deviation. This helps stabilize and speed up the training process, making the network more robust to changes in input distributions.
+\end{example}
+    
+\begin{example}
+    \textbf{Activation Layer:} Activation layers introduce non-linearities into the network by applying a non-linear activation function to the outputs of the previous layer. Common activation functions include ReLU (Rectified Linear Unit), sigmoid, and tanh.
+\end{example}
+    
+\begin{example}
+    \textbf{Output Layer:} The output layer provides the final predictions or outputs of the neural network. The configuration of this layer depends on the type of task the network is designed for. For example, for classification tasks, a softmax layer is commonly used to produce probability distributions over classes.
+\end{example}
+
+%-------------------------------------------------------------------------------
+
+\subsection{Activation Functions}
+
+\begin{example}
+    \textbf{Sigmoid Activation Function:}
+    The sigmoid activation function is defined as:
+    $$
+    f(x) = \frac{1}{1 + e^{-x}}.
+    $$
+\end{example}
+    
+\begin{example}
+    \textbf{Hyperbolic Tangent (Tanh) Activation Function:}
+    The Tanh activation function is defined as:
+    $$
+    f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}.
+    $$
+\end{example}
+    
+\begin{example}
+    \textbf{Rectified Linear Unit (ReLU) Activation Function:}
+    The ReLU activation function is defined as:
+    $$
+    f(x) = \max(0, x).
+    $$
+\end{example}
+    
+\begin{example}
+    \textbf{Leaky ReLU Activation Function:}
+    The Leaky ReLU activation function is defined as:
+    $$
+    f(x) = \begin{cases} x, & \text{if } x \geq 0 \\ \alpha x, & \text{if } x < 0 \end{cases},
+    $$
+    where $\alpha$ is a small constant, typically 0.01.
+\end{example}
+    
+\begin{example}
+    \textbf{Softmax Activation Function:}
+    The softmax activation function is defined as:
+    $$
+    f(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{N} e^{x_j}},
+    $$
+    for $i = 1, 2, \ldots, N$, where $N$ is the number of classes.
+\end{example}
 
 %-------------------------------------------------------------------------------
