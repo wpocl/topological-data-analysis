@@ -1,0 +1,67 @@
+\subsection{Supervised Learning}
+
+The setting of supervised learning refers to the prediction of an output $y$ from an input $x$. Consider a set of $N$ training examples $\{(x_1, y_1), \ldots, (x_N, y_N)\}$. A learning algorithm seeks a function $h: X \rightarrow Y$ which provides a good model for the data: $h(x) \approx y$.
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Loss Functions}
+
+Suppose we restrict our attention to a parameterised family of functions $h_{\theta}: X \rightarrow Y$. We can define a loss function $J_{\theta}$ which quantifies how good $h_{\theta}$ is as a model of our data, with low values indicating a better model.
+
+\begin{example}
+    Suppose that $y$ is binary, and that $t = h_{\theta}(x)$ represents a probability that the label for $x$ is one. We can define
+    $$
+    \mathcal{J}_\theta^i = - y_i \log t_i - (1 - y_i) \log(1 - t_i),
+    $$
+    which penalizes "confident" incorrect predictions (i.e. $t$ close to $1 - y$) more than "low confidence" incorrect predictions (i.e. $t$ close to $\frac 1 2$). The cross-entropy loss is then defined as
+    $$
+    \mathcal{J}_{\theta} = \frac{1}{N} \sum_{i=1}^N \mathcal{J}_\theta^i.
+    $$
+\end{example}
+
+\begin{example}
+    The previous example can be extended to the case when $y$ is categorical. Suppose that there are $k$ classes which $y$ can belong to, so that $y \in \{0, 1\}^k$ with only one nonzero entry indicating the class $y$ belongs to. Suppose also that $t^j$ ($1 \leq j \leq k$) represents a probability that the the label of $x$ is $j$, so then $\sum_{j=1}^k t^j = 1$. Then we can define a multidimensional analog of $\mathcal{J}_\theta^i$
+    $$
+    \mathcal{J}_\theta^i = - \sum_{j=1}^k y_i^j \log t_i^j.
+    $$
+    Then we can define the cross-entropy loss accross the training examples as
+    $$
+    \mathcal{J}_{\theta} = \frac{1}{N} \sum_{i=1}^N \mathcal{J}_\theta^i
+    $$
+\end{example}
+
+\begin{example}
+    Suppose that $y$ is now numerical, specifically $y \in \R^k$. Suppose also that the range of $h_{\theta}$ is $\R^k$. Write
+    $$
+    \mathcal{J}_\theta^i = \norm{y_i - t_i}^2.
+    $$
+    Then we can define the mean squared error as
+    $$
+    \mathcal{J}_\theta = \frac{1}{N} \sum_{i=1}^N \mathcal{J}_\theta^i.
+    $$
+\end{example}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Optimisation}
+
+Since a low value of the loss function $J_{\theta}$ indicates that $h_\theta$ is a better model of the data, we aim to minimise the loss function. In simple cases, like for a linear regression with mean squared error loss, we can find a closed form expression for the global minima. In more complicated cases this is not possible, so use a $\mathcal{J}_{\theta}$ is differentiable in $\theta$ and apply an optimisation algorithm to find a minima.
+
+\begin{example}
+    Recall from calculus that $\Delta \mathcal{J}_{\theta}$ points in the direction of steepest ascent. By linearity of the tangent space $-\Delta \mathcal{J}_{\theta}$ points in the direction of the steepest descent.
+
+    Then to find a minima of $\mathcal{J}_{\theta}$ we can continuously update $\theta$ with the rule
+    $$
+    \theta -= \alpha \mathcal{J}_{\theta},
+    $$
+    where $\alpha > 0$ is refered to as the learning rate. The algorithm derived from this update rule is called gradient descent. 
+\end{example}
+
+\begin{example}
+    A variant of gradient descent which is less compute intensive is stochastic gradient descent. In stochastic gradient descent we sample $i$ uniformly from $\{1, \ldots, N\}$ and update $\theta$ by the rule
+    $$
+    \theta -= \alpha \Delta \mathcal{J}_{\theta}^i.
+    $$
+\end{example}
+
+%-------------------------------------------------------------------------------
